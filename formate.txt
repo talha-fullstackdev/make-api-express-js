@@ -1,0 +1,7 @@
+{
+    "name":"Uzair ansari",
+    "email":"uzair69@gmail.com",
+    "gender":"shemale",
+    "department":"ILETS course",
+    "position":"cheif in cuzn ka hotel"
+}
