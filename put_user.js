@@ -8,7 +8,7 @@ app.put("/users/:id", async (req, res) => {
   try {
     const userId = req.params.id;
     const { name, email, gender } = req.body;
-    const updateUser = await  user.findByIdAndUpdate(
+    const updateUser = await user.findByIdAndUpdate(
       userId,
       { name, email, gender },
       { new: true }

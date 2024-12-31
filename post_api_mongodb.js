@@ -3,7 +3,7 @@ import connectiondb from "./db/connectiondb.js";
 import employee from "./model/employeeModel.js";
 connectiondb();
 const app = express();
-app.use(express.json()); // convert json data into javascript object to execute here
+app.use(express.json()); // convert json data into javascript object to execute here (middleware)
 app.post("/employees", async (req, res) => {
   try {
     const { name, email, gender, department, position } = req.body;
@@ -17,7 +17,7 @@ app.post("/employees", async (req, res) => {
     const employees = await newEmployee.save();
     res.json(employees);
   } catch (err) {
-    console.error("error occured while sending data to data base");
+    console.error("error occured while sending data to database");
     res.status(500).send("server error");
   }
 });

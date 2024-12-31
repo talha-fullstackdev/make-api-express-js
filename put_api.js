@@ -18,7 +18,7 @@ app.put("/employee/:id", async (req, res) => {
     }
     res.json(updateEmployee);
   } catch (err) {
-    console.err("error ocuured while updating data", err);
+    console.err("error ocuured while updating employee data", err);
     res.status(500).send("server error");
   }
 });

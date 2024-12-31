@@ -1,10 +1,8 @@
 import express from "express"
 import connectionDB from "./db/connectiondb.js"
 import employee from "./model/employeeModel.js"
-connectionDB()
 import cors from "cors";
-
-
+connectionDB()
 const app = express()
 app.use(cors());
 app.get("/",async (req,res)=>{

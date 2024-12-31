@@ -19,7 +19,7 @@ app.post("/users", async (req, res) => {
     res.status(500).send("server errror");
   }
 });
-const PORT = 3000
-app.listen(PORT,()=>{
-    console.log(`server started http://localhost:${PORT}`)
-})
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`server started http://localhost:${PORT}`);
+});
