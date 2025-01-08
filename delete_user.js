@@ -9,14 +9,14 @@ app.delete("/users/:id", async (req, res) => {
     const userId = req.params.id;
     const deleteUser = await user.findByIdAndDelete(userId);
     if (!deleteUser) {
-      return res.status(404).json({ msg: "user not found" });
+      return res.status(404).json({ msg: "User not found!" });
     }
-    res.json({ msg: "user deleted Succesfully" });
+    res.json({ msg: "User deleted Succesfully" });
   } catch (err) {
-    console.error("error occured while deleting", err);
-    res.status(500).send("server error");
+    console.error("Error occured while deleting", err);
+    res.status(500).send("Server error!");
   }
 });
 app.listen(3000, () => {
-  console.log("the server has started at http://localhost:3000");
+  console.log("The server has started at http://localhost:3000");
 });

@@ -15,17 +15,18 @@ const fileUpload = multer({
     },
   }),
 }).single("my_file");
-app.post("/fileupload",fileUpload, (req, res) => {
+app.post("/fileupload", fileUpload, (req, res) => {
   if (!req.file) {
-    return res.status(400).send("no file uploaded");
+    return res.status(400).send("No file uploaded");
   }
   const newFile = new file({
-    filepath: req.file.path
+    filepath: req.file.path,
   });
-  newFile.save()
-    .then(() => res.send("file uploaded"))
-    .catch((err) => res.send("error while uploading file", err));
+  newFile
+    .save()
+    .then(() => res.send("File uploaded"))
+    .catch((err) => res.send("Error while uploading file", err));
 });
 app.listen(3000, () => {
-  console.log("server started http://localhost:3000");
+  console.log("Server started http://localhost:3000");
 });
