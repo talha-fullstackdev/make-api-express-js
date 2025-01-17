@@ -13,7 +13,7 @@ app.delete("/users/:id", async (req, res) => {
     }
     res.json({ msg: "User deleted Succesfully" });
   } catch (err) {
-    console.error("Error occured while deleting", err);
+    console.error("Error occured while deleting user", err);
     res.status(500).send("Server error!");
   }
 });

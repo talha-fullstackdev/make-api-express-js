@@ -24,9 +24,9 @@ app.put("/employee/:id", async (req, res) => {
 });
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`the server has been started at http://localhost:3000`);
+  console.log(`The server has been started at http://localhost:3000`);
 });
 
 
 // difference between put and patch is that if we want to update all fields then we use put method but if you want to update few fields then we use patch method
-// in put api if we want to update only one field we have to write all other properties as weel which are not supposed to be changed otherwise they may be lose but in patch if we want to update one field then we have only provide that filed not all filed in the object
+// in put api if we want to update only one field we have to write all other properties as well which are not supposed to be changed otherwise they may be lose but in patch if we want to update one field then we have only provide that filed not all fileds
