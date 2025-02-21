@@ -1,7 +1,7 @@
 import express from "express"
 import connectionDB from "./db/connectiondb.js"
 import employee from "./model/employeeModel.js"
-import cors from "cors";
+import cors from "cors";// cross origin resource sharing
 connectionDB()
 const app = express()
 app.use(cors());

@@ -28,7 +28,7 @@ connectionDB();
 const app = express();
 
 // Uncomment if you plan to parse JSON payloads
-// app.use(express.json());
+app.use(express.json());
 
 app.get("/employee", async (req, res) => {
   try {
@@ -39,20 +39,19 @@ app.get("/employee", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-app.get("/employee/:id",async(req,res)=>{
-    try{
-        const empID= req.params.id
-        const employeeID = await employee.findBYIdAndUpdate(empID)
-        if(!empID){
-            return  res.status(404).json({msg:"employee not found"})
-        }
-        res.json(employeeID)
-
-    }catch(err){
-        console.log("error has occured while geting data",err)
-        res.status(500).send("server error")
+app.get("/employee/:id", async (req, res) => {
+  try {
+    const empID = req.params.id;
+    const employeeID = await employee.findBYIdAndUpdate(empID);
+    if (!empID) {
+      return res.status(404).json({ msg: "employee not found" });
     }
-})
+    res.json(employeeID);
+  } catch (err) {
+    console.log("error has occured while geting data", err);
+    res.status(500).send("server error");
+  }
+});
 
 app.listen(2000, () => {
   console.log("Server has started at http://localhost:2000"); // Updated port in the log
