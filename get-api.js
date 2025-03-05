@@ -22,17 +22,14 @@ import express from "express";
 import connectionDB from "./db/connectiondb.js";
 import employee from "./model/employeeModel.js";
 
-// Connect to the database
 connectionDB();
 
 const app = express();
-
-// Uncomment if you plan to parse JSON payloads
 app.use(express.json());
 
 app.get("/employee", async (req, res) => {
   try {
-    const employees = await employee.find(); // Corrected typo
+    const employees = await employee.find();
     res.json(employees);
   } catch (error) {
     console.error("Error occurred while fetching data from database:", error);
