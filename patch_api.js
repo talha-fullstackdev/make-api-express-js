@@ -14,12 +14,12 @@ app.patch("/employees/:id", async (req, res) => {
       { new: true }
     );
     if (!updatedEmp) {
-      return res.status(404).json({ msg: "Employee not found" });
+      return res.status(404).json({ msg: "Employee not found!" });
     }
     res.json(updatedEmp);
   } catch (err) {
-    console.log("error has occured while updating", err);
-    res.status(500).send("server error");
+    console.log("error has occured while updating!", err);
+    res.status(500).send("server error!");
   }
 });
 app.listen(3000, () => {
