@@ -40,12 +40,12 @@ app.get("/employee/:id", async (req, res) => {
     const empID = req.params.id;
     const employeeID = await employee.findBYIdAndUpdate(empID);
     if (!empID) {
-      return res.status(404).json({ msg: "employee not found" });
+      return res.status(404).json({ msg: "employee not found!" });
     }
     res.json(employeeID);
   } catch (err) {
     console.log("error has occured while geting data", err);
-    res.status(500).send("server error");
+    res.status(500).send("server error!");
   }
 });
 
