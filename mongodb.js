@@ -10,8 +10,8 @@ app.get("/",async (req,res)=>{
         const employeeData = await employee.find()
         res.json(employeeData)
     }catch(err){
-        console.log("cound not fetch data",err)
-        res.status(500).send("server error");
+        console.log("cound not fetch data!",err)
+        res.status(500).send("server error!");
     }
 })
 app.listen(3000,()=>{
