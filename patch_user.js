@@ -14,12 +14,12 @@ app.patch("/users/:id", async (req, res) => {
       { new: true }
     );
     if (!updateUser) {
-      return res.status(404).json({ msg: "user not found" });
+      return res.status(404).json({ msg: "user not found!" });
     }
     res.json(updateUser);
   } catch (err) {
     console.error("error occured while updating data in data base");
-    res.status(500).send("server error");
+    res.status(500).send("server error!");
   }
 });
 app.listen(3000, () => {
