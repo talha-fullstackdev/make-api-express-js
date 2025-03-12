@@ -15,7 +15,7 @@ app.post("/users", async (req, res) => {
     const users = await newUser.save();
     res.json(users);
   } catch (err) {
-    console.err("error occured while sending data to data base");
+    console.err("error occured while sending data to data base!");
     res.status(500).send("server errror!");
   }
 });
