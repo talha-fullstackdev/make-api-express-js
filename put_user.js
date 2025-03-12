@@ -18,7 +18,7 @@ app.put("/users/:id", async (req, res) => {
     }
     res.json(updateUser);
   } catch (err) {
-    console.error("error occured while updating");
+    console.error("error occured while updating!");
     res.status(500).send("server error!");
   }
 });
