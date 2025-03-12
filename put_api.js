@@ -14,11 +14,11 @@ app.put("/employee/:id", async (req, res) => {
       { new: true }
     );
     if (!updateEmployee) {
-      return res.status(404).json({ msg: "employee not found" });
+      return res.status(404).json({ msg: "employee not found!" });
     }
     res.json(updateEmployee);
   } catch (err) {
-    console.err("Error ocuured while updating employee data", err);
+    console.err("Error ocuured while updating employee data!", err);
     res.status(500).send("server error!");
   }
 });
