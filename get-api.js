@@ -17,7 +17,6 @@
 // app.listen(2000,()=>{
 //     console.log("server has started at http://localhost:3000")
 // })
-
 import express from "express";
 import connectionDB from "./db/connectiondb.js";
 import employee from "./model/employeeModel.js";
