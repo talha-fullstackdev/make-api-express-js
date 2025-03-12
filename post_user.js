@@ -16,7 +16,7 @@ app.post("/users", async (req, res) => {
     res.json(users);
   } catch (err) {
     console.err("error occured while sending data to data base");
-    res.status(500).send("server errror");
+    res.status(500).send("server errror!");
   }
 });
 const PORT = 3000;
