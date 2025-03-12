@@ -18,7 +18,7 @@ app.patch("/users/:id", async (req, res) => {
     }
     res.json(updateUser);
   } catch (err) {
-    console.error("error occured while updating data in data base");
+    console.error("error occured while updating data in data base!");
     res.status(500).send("server error!");
   }
 });
