@@ -13,7 +13,7 @@ app.delete("/employess/:id", async (req, res) => {
     }
     res.json({ msg: "Employee deleted succesfully" });
   } catch (err) {
-    console.error("Error has occured while deleting employee");
+    console.error("Error has occured while deleting employee!");
     res.status(500).send("Server error!");
   }
 });
