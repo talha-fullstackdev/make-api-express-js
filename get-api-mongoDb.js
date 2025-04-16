@@ -4,6 +4,7 @@ import employee from "./model/employeeModel.js";
 connectionDB();
 const app = express();
 app.use(express.json());
+//////////// get all employees data
 app.get("/employeeData", async (req, res) => {
   try {
     const employees = await employee.find();
@@ -12,6 +13,7 @@ app.get("/employeeData", async (req, res) => {
     console.error("error fetching data", err);
   }
 });
+///////////////// get only one empployee data by its id
 app.get("/employeeData/:id", async (req, res) => {
   try {
     let empId = req.params.id;
@@ -24,6 +26,7 @@ app.get("/employeeData/:id", async (req, res) => {
     console.error("error happer", err);
   }
 });
+/////////////// delete user data by using its id
 app.delete("/delete/:id", async (req, res) => {
   try {
     let empId = req.params.id;
