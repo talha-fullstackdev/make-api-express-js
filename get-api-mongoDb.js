@@ -11,7 +11,7 @@ app.get("/employeeData", async (req, res) => {
     res.json(employees);
   } catch (err) {
     console.error("error fetching data", err);
-    res.status(500).send("server error")
+    res.status(500).send("server error");
   }
 });
 ///////////////// get only one empployee data by its id
@@ -25,7 +25,7 @@ app.get("/employeeData/:id", async (req, res) => {
     res.status(200).json(emp);
   } catch (err) {
     console.error("error happer", err);
-    res.status(500).send("server error")
+    res.status(500).send("server error");
   }
 });
 /////////////// delete user data by using its id
@@ -39,10 +39,36 @@ app.delete("/delete/:id", async (req, res) => {
     res.status(200).send("emp deleted successfully");
   } catch (err) {
     console.error("error", err);
-    res.status(500).send("server error")
+    res.status(500).send("server error");
+  }
+});
+//////////////////api to post data in employee data base
+app.post("/postEmployee", async (req, res) => {
+  try {
+    const { name, email, gender, department, position } = req.body;
+    const existUser = await employee.findOne({email})
+    if(existUser){
+        return res.status(404).json({
+            msg:"user exist with this email try another email to register"
+        })
+    }
+    const newEmp = new employee({
+      name,
+      email,
+      gender,
+      department,
+      position,
+    });
+    const newEmployee = await newEmp.save();
+    res.json({
+        msg:"This employee is saved to the data base",
+        newEmployee
+    });
+  } catch (err) {
+    console.error("server side error ocuured!", err);
+    res.status(500).send("server error!");
   }
 });
 app.listen(3000, () => {
   console.log("the server has started at port 3000");
-  
 });
