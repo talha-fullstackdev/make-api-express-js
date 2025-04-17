@@ -19,7 +19,7 @@ app.get("/employeeData/:id", async (req, res) => {
   try {
     let empId = req.params.id;
     let emp = await employee.findById(empId);
-    if (!empId) {
+    if (!emp) {
       res.status(404).json({ msg: "employee not found" });
     }
     res.status(200).json(emp);
