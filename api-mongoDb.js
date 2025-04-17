@@ -71,28 +71,30 @@ app.post("/postEmployee", async (req, res) => {
 });
 /////////////////////////////////////////////////
 ///// put api (to edit existing employee data)
-app.put("/putemployee/:id",async(req,res)=>{
-  try{
-    let empID = req.params.id
+app.put("/putemployee/:id", async (req, res) => {
+  try {
+    let empID = req.params.id;
     const { name, email, gender, department, position } = req.body;
+    const emp = await employee.findById(empID);
+    if (emp.name == name) {
+      return res.status(409).json({// here if i use 304 status code then my json object will be ignore and not show in json response if you want to show a json object and a message then use another status code like 404 and 409
+        msg: "not modified! current name is same is old name",
+      });
+    }
     let updatedEmployee = await employee.findByIdAndUpdate(
       empID,
       { name, email, gender, department, position },
-      {new:true}
-    )
-    if(!updatedEmployee){
-      res.status(404).json({msg:"employee not found!"})
-    }
+      { new: true }
+    );
     res.status(200).json({
-      msg:"employee data updated succesfully",
-      updatedEmployee
-    })
-
-  }catch(err){
-    console.error("server side error!")
-    res.status(500).send("server error")
+      msg: "employee data updated succesfully",
+      updatedEmployee,
+    });
+  } catch (err) {
+    console.error("server side error!", err);
+    res.status(500).send("server error");
   }
-})
+});
 app.listen(3000, () => {
   console.log("the server has started at port 3000");
 });
