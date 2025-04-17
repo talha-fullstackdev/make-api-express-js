@@ -77,7 +77,8 @@ app.put("/putemployee/:id", async (req, res) => {
     const { name, email, gender, department, position } = req.body;
     const emp = await employee.findById(empID);
     if (emp.name == name) {
-      return res.status(409).json({// here if i use 304 status code then my json object will be ignore and not show in json response if you want to show a json object and a message then use another status code like 404 and 409
+      return res.status(409).json({
+        // here if i use 304 status code then my json object will be ignore and not show in json response if you want to show a json object and a message then use another status code like 404 and 409
         msg: "not modified! current name is same is old name use another name",
       });
     }
@@ -93,6 +94,29 @@ app.put("/putemployee/:id", async (req, res) => {
   } catch (err) {
     console.error("server side error!", err);
     res.status(500).send("server error");
+  }
+});
+//////////////////////////////////////////////////////////////////////
+/////// search api
+app.get("/search/:value", async (req, res) => {
+  try {
+    let searchValue = req.params.value;
+    let result = await employee.find({
+      $or: [
+        { name: { $regex: searchValue, $options: "i" } },
+        { email: { $regex: searchValue, $options: "i" } },
+        { gender: { $regex: searchValue, $options: "i" } },
+        { department: { $regex: searchValue, $options: "i" } },
+        { position: { $regex: searchValue, $options: "i" } }
+      ],
+    });
+    if (result.length === 0) {
+      return res.status(404).json({ msg: "no matched found for this word" });
+    }
+    res.json(result);
+  } catch (err) {
+    console.error("error ocuured", err);
+    res.status(500).send("server error!");
   }
 });
 app.listen(3000, () => {
