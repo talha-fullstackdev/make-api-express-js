@@ -3,7 +3,7 @@ import connectionDB from "./db/connectiondb.js";
 import employee from "./model/employeeModel.js";
 connectionDB();
 const app = express();
-app.use(express.json());
+app.use(express.json()); // this middleware convert the json data comming in req.body to javascript object
 //////////// get all employees data
 app.get("/employeeData", async (req, res) => {
   try {
