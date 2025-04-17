@@ -10,8 +10,8 @@ app.get("/employeeData", async (req, res) => {
     const employees = await employee.find();
     res.json(employees);
   } catch (err) {
-    console.error("error fetching data", err);
-    res.status(500).send("server error");
+    console.error("server side errro!", err);
+    res.status(500).send("server error!");
   }
 });
 ///////////////// get only one empployee data by its id
@@ -20,12 +20,12 @@ app.get("/employeeData/:id", async (req, res) => {
     let empId = req.params.id;
     let emp = await employee.findById(empId);
     if (!emp) {
-      res.status(404).json({ msg: "employee not found" });
+      res.status(404).json({ msg: "Employee not found" });
     }
     res.status(200).json(emp);
   } catch (err) {
-    console.error("error happer", err);
-    res.status(500).send("server error");
+    console.error("server side error!", err);
+    res.status(500).send("server error!");
   }
 });
 /////////////// delete user data by using its id
@@ -34,12 +34,12 @@ app.delete("/delete/:id", async (req, res) => {
     let empId = req.params.id;
     let deleteEmp = await employee.findByIdAndDelete(empId);
     if (!deleteEmp) {
-      return res.status(409).json({ msg: "no emp found with this id" });
+      return res.status(409).json({ msg: "no employee found with this id!" });
     }
-    res.status(200).send("emp deleted successfully");
+    res.status(200).send("Employee deleted successfully");
   } catch (err) {
-    console.error("error", err);
-    res.status(500).send("server error");
+    console.error("server side error!", err);
+    res.status(500).send("server error!");
   }
 });
 //////////////////api to post data in employee data base
