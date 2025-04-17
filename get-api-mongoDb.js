@@ -46,11 +46,11 @@ app.delete("/delete/:id", async (req, res) => {
 app.post("/postEmployee", async (req, res) => {
   try {
     const { name, email, gender, department, position } = req.body;
-    const existUser = await employee.findOne({email})
-    if(existUser){
-        return res.status(409).json({
-            msg:"user exist with this email try another email to register"
-        })
+    const existUser = await employee.findOne({ email });
+    if (existUser) {
+      return res.status(409).json({
+        msg: "user exist with this email try another email to register",
+      });
     }
     const newEmp = new employee({
       name,
@@ -61,8 +61,8 @@ app.post("/postEmployee", async (req, res) => {
     });
     const newEmployee = await newEmp.save();
     res.json({
-        msg:"This employee is saved to the data base",
-        newEmployee
+      msg: "This employee is saved to the data base",
+      newEmployee,
     });
   } catch (err) {
     console.error("server side error ocuured!", err);
