@@ -34,7 +34,7 @@ app.delete("/delete/:id", async (req, res) => {
     let empId = req.params.id;
     let deleteEmp = await employee.findByIdAndDelete(empId);
     if (!deleteEmp) {
-      return res.status(404).json({ msg: "no emp found with this id" });
+      return res.status(409).json({ msg: "no emp found with this id" });
     }
     res.status(200).send("emp deleted successfully");
   } catch (err) {
