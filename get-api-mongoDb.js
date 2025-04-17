@@ -48,7 +48,7 @@ app.post("/postEmployee", async (req, res) => {
     const { name, email, gender, department, position } = req.body;
     const existUser = await employee.findOne({email})
     if(existUser){
-        return res.status(404).json({
+        return res.status(409).json({
             msg:"user exist with this email try another email to register"
         })
     }
