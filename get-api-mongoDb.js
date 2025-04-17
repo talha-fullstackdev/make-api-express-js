@@ -69,6 +69,30 @@ app.post("/postEmployee", async (req, res) => {
     res.status(500).send("server error!");
   }
 });
+/////////////////////////////////////////////////
+///// put api (to edit existing employee data)
+app.put("/putemployee/:id",async(req,res)=>{
+  try{
+    let empID = req.params.id
+    const { name, email, gender, department, position } = req.body;
+    let updatedEmployee = await employee.findByIdAndUpdate(
+      empID,
+      { name, email, gender, department, position },
+      {new:true}
+    )
+    if(!updatedEmployee){
+      res.status(404).json({msg:"employee not found!"})
+    }
+    res.status(200).json({
+      msg:"employee data updated succesfully",
+      updatedEmployee
+    })
+
+  }catch(err){
+    console.error("server side error!")
+    res.status(500).send("server error")
+  }
+})
 app.listen(3000, () => {
   console.log("the server has started at port 3000");
 });
