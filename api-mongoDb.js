@@ -78,7 +78,7 @@ app.put("/putemployee/:id", async (req, res) => {
     const emp = await employee.findById(empID);
     if (emp.name == name) {
       return res.status(409).json({// here if i use 304 status code then my json object will be ignore and not show in json response if you want to show a json object and a message then use another status code like 404 and 409
-        msg: "not modified! current name is same is old name",
+        msg: "not modified! current name is same is old name use another name",
       });
     }
     let updatedEmployee = await employee.findByIdAndUpdate(
