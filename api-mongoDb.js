@@ -111,14 +111,14 @@ app.get("/search/:value", async (req, res) => {
       ],
     });
     if (result.length === 0) {
-      return res.status(404).json({ msg: "no matched found for this word" });
+      return res.status(404).json({ msg: "No matched found for this word" });
     }
     res.json(result);
   } catch (err) {
-    console.error("error ocuured", err);
+    console.error("Error ocuured", err);
     res.status(500).send("server error!");
   }
 });
 app.listen(3000, () => {
-  console.log("the server has started at port 3000");
+  console.log("The server has started at port 3000");
 });
