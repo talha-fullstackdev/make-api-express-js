@@ -96,7 +96,7 @@ app.put("/putemployee/:id", async (req, res) => {
     res.status(500).send("server error");
   }
 });
-/////////////////////////////////////////////
+////////////////////////////////////////////////////////
 /////// search api
 app.get("/search/:value", async (req, res) => {
   try {
