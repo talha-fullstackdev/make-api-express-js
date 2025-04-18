@@ -111,7 +111,7 @@ app.get("/search/:value", async (req, res) => {
       ],
     });
     if (result.length === 0) {
-      return res.status(404).json({ msg: "No matched found for this word" });
+      return res.status(404).json({ msg: "No matched found for this search" });
     }
     res.json(result);
   } catch (err) {
