@@ -17,16 +17,16 @@ app.get("/search-emp/:value", async (req, res) => {
     });
     if (result.length === 0) {
       // here checking result length if it is zero mean no item is found
-      return res.status(404).json({ msg: "no record found for this search!" });
+      return res.status(404).json({ msg: "No record found for this search!" });
     }
     res.send(result);
   } catch (err) {
-    console.log("error has occured while searching!");
-    res.status(500).send("server error!");
+    console.log("Error has occured while searching!");
+    res.status(500).send("Server error!");
   }
 });
 app.listen(3000, () => {
     
-  console.log("server has started http:/localhost:3000");
+  console.log("Server has started http:/localhost:3000");
 });
 // note our search s case sensitive ,if in record there is Talha and we seacrh talha then it will not work
