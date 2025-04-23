@@ -8,7 +8,7 @@ const fileUpload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, callBack) {
       callBack(null, "uploads");
-    }, /////////// here we have to pass three parameters req,file and a callback function
+    }, /////// here we have to pass three parameters req,file and a callback function
     filename: function (req, file, callBack) {
       const uniqueName = file.fieldname + "-" + Date.now() + ".jpg";
       callBack(null, uniqueName);
