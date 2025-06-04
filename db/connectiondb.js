@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const connectionDB = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://nawazt964:yDrkUaTtFMJ64euq@cluster0.7lsnp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+      "mongodb+srv://talhafullstack786:rsvkYPGPKewBKgpZ@cluster0.ckw8vhq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     );
     console.log("Data base connected succesfully");
   } catch (err) {
